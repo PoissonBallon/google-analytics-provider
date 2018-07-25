@@ -21,7 +21,7 @@ public struct GoogleAnalyticsConfig: Service {
 }
 
 public final class GoogleAnalyticsProvider: Provider {
-  
+
   public init() { }
   
   public func boot(_ worker: Container) throws { }
@@ -32,9 +32,10 @@ public final class GoogleAnalyticsProvider: Provider {
   
   public func register(_ services: inout Services) throws {
     services.register { (container) -> GoogleAnalyticsClient in
-      let httpClient = try container.make(Client.self)
-      let config = try container.make(GoogleAnalyticsConfig.self)
-      let logger = try container.make(Logger.self)
+      let subContainer = container.subContainer(on:  MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount))
+      let httpClient = try subContainer.make(Client.self)
+      let config = try subContainer.make(GoogleAnalyticsConfig.self)
+      let logger = try subContainer.make(Logger.self)
       return GoogleAnalyticsClient(config: config, client: httpClient, logger: logger)
     }
   }
