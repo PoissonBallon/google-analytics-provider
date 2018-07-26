@@ -15,8 +15,8 @@ public struct GoogleAnalyticsConfig: Service {
 
   public init(trackingID: String, clientID: String = UUID().uuidString, version: Int = 1) {
     self.trackingID = trackingID
-    self.version = version
     self.clientID = clientID
+    self.version = version
   }
 }
 

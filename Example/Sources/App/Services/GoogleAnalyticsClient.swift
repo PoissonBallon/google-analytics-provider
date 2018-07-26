@@ -18,18 +18,26 @@ public final class GoogleAnalyticsClient: Service {
     self.config = config
     self.logger = logger
     self.logger.info("[GoogleAnalyticsClient] : Initializing the client successfully")
-    print("INIT")
-    debugPrint(self)
   }
   
   deinit {
-    try! self.client.container.syncShutdownGracefully()
+    try? self.client.container.syncShutdownGracefully()
     self.logger.info("[GoogleAnalyticsClient] : De-Initializing the client successfully")
   }
   
-  func send(hit:GoogleAnalyticsHit) {
-    print("GET START")
-//    try! self.client.get(URL(string: "https://www.google.fr/")!).wait()
-    print("GET END")
+  func send(hit: GoogleAnalyticsHit) {
+    self.logger.info("[GoogleAnalyticsClient] : send hit")
+    
+    self.client.container.future().map {
+      print("before sleep")
+      sleep(10)
+      print("After sleep")
+      }.flatMap {
+        self.client.get(URL(string: "https://www.google.fr/")!)
+      }.addAwaiter(callback: sendSuccessfully)
+  }
+  
+  func sendSuccessfully(response: FutureResult<Response>) {
+    self.logger.info("[GoogleAnalyticsClient] : hit sended")
   }
 }
