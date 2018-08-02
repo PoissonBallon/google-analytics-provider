@@ -7,14 +7,14 @@
 
 import Foundation
 
-public enum HitParameter {
+public enum GoogleAnalyticsHitParameter {
   // Config Parameter
   case version(value: Int)
   case trackingID(value: String)
   case clientID(value: String)
   
   // Generic Parameter
-  case type(value: HitType)
+  case type(value: GoogleAnalyticsHitType)
   case userID(value: String)
   
   // Event Parameter
@@ -30,7 +30,7 @@ public enum HitParameter {
 }
 
 
-extension HitParameter {
+extension GoogleAnalyticsHitParameter {
   
   var key: String {
     switch self {
@@ -67,7 +67,7 @@ extension HitParameter {
   }
   
   
-  var supportedHitTypes: HitType {
+  var supportedHitTypes: GoogleAnalyticsHitType {
     switch self {
     case .version:            return .generic
     case .trackingID:         return .generic

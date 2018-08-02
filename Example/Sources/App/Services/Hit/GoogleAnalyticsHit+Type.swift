@@ -7,8 +7,9 @@
 
 import Foundation
 
-public enum HitType: String {
+public enum GoogleAnalyticsHitType: String {
   case generic  = "all"
   case page     = "pageview"
   case event    = "event"
 }
+

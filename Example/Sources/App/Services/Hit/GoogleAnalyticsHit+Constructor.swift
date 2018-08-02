@@ -7,41 +7,39 @@
 
 import Foundation
 
-
-
 // MARK: - Event Tracking Hit Constructor
-public extension Hit {
+public extension GoogleAnalyticsHit {
   static func event(category: String, action: String,
-                    label: String? = nil, value: String? = nil, userID: String? = nil) -> Hit {
-    var parameters: [HitParameter] = [.type(value: HitType.event)]
+                    label: String? = nil, value: String? = nil, userID: String? = nil) -> GoogleAnalyticsHit {
+    var parameters: [GoogleAnalyticsHitParameter] = [.type(value: GoogleAnalyticsHitType.event)]
     parameters.append(.category(value: category))
     parameters.append(.action(value: action))
     
     if let exist = label  { parameters.append(.label(value: exist)) }
     if let exist = value  { parameters.append(.value(value: exist)) }
     if let exist = userID { parameters.append(.userID(value: exist)) }
-    return Hit(parameters: parameters)
+    return GoogleAnalyticsHit(parameters: parameters)
   }
 }
 
 // MARK: - Page Tracking Hit Constructor
-public extension Hit {
+public extension GoogleAnalyticsHit {
   
-  static func page(documentHostname: String, userID: String? = nil) -> Hit {
-    var parameters: [HitParameter] = [.type(value: HitType.page)]
+  static func page(documentHostname: String, userID: String? = nil) -> GoogleAnalyticsHit {
+    var parameters: [GoogleAnalyticsHitParameter] = [.type(value: GoogleAnalyticsHitType.page)]
     parameters.append(.documentHostname(value: documentHostname))
     
     if let exist = userID { parameters.append(.userID(value: exist)) }
-    return Hit(parameters: parameters)
+    return GoogleAnalyticsHit(parameters: parameters)
   }
   
-  static func page(path: String, title: String, userID: String? = nil) -> Hit {
-    var parameters: [HitParameter] = [.type(value: HitType.page)]
+  static func page(path: String, title: String, userID: String? = nil) -> GoogleAnalyticsHit {
+    var parameters: [GoogleAnalyticsHitParameter] = [.type(value: GoogleAnalyticsHitType.page)]
     parameters.append(.path(value: path))
     parameters.append(.title(value: title))
     
     if let exist = userID { parameters.append(.userID(value: exist)) }
-    return Hit(parameters: parameters)
+    return GoogleAnalyticsHit(parameters: parameters)
   }
   
 }
