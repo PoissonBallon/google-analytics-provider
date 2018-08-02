@@ -6,7 +6,7 @@ final class TodoController {
   func index(_ req: Request) throws -> Future<[Todo]> {
     print("Index START")
     let analytics = try req.sharedContainer.make(GoogleAnalyticsClient.self)
-    analytics.send(hit: PageTrackingHit(documentHostname: "", page: "todo", title: "index"))
+//    analytics.send(hit: PageTrackingHit(documentHostname: "", page: "todo", title: "index"))
     print("Index BEFORE END")
     return Todo.query(on: req).all()
   }
@@ -15,7 +15,7 @@ final class TodoController {
   func create(_ req: Request) throws -> Future<Todo> {
     let analytics = try req.make(GoogleAnalyticsClient.self)
     
-    analytics.send(hit: PageTrackingHit(documentHostname: "", page: "todo", title: "save"))
+//    analytics.send(hit: PageTrackingHit(documentHostname: "", page: "todo", title: "save"))
     return try req.content.decode(Todo.self).flatMap { todo in
       return todo.save(on: req)
     }
@@ -25,7 +25,7 @@ final class TodoController {
   func delete(_ req: Request) throws -> Future<HTTPStatus> {
     let analytics = try req.make(GoogleAnalyticsClient.self)
     
-    analytics.send(hit: PageTrackingHit(documentHostname: "", page: "todo", title: "save"))
+//    analytics.send(hit: PageTrackingHit(documentHostname: "", page: "todo", title: "save"))
     return try req.parameters.next(Todo.self).flatMap { todo in
       return todo.delete(on: req)
       }.transform(to: .ok)
