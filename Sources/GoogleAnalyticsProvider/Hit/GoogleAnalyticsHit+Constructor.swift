@@ -9,8 +9,9 @@ import Foundation
 
 // MARK: - Event Tracking Hit Constructor
 public extension GoogleAnalyticsHit {
-  static func event(category: String, action: String,
-                    label: String? = nil, value: String? = nil, userID: String? = nil) -> GoogleAnalyticsHit {
+  public static func event(category: String, action: String,
+                           label: String? = nil, value: String? = nil,
+                           userID: String? = nil) -> GoogleAnalyticsHit {
     var parameters: [GoogleAnalyticsHitParameter] = [.type(value: GoogleAnalyticsHitType.event)]
     parameters.append(.category(value: category))
     parameters.append(.action(value: action))
@@ -25,7 +26,7 @@ public extension GoogleAnalyticsHit {
 // MARK: - Page Tracking Hit Constructor
 public extension GoogleAnalyticsHit {
   
-  static func page(documentHostname: String, userID: String? = nil) -> GoogleAnalyticsHit {
+  public static func page(documentHostname: String, userID: String? = nil) -> GoogleAnalyticsHit {
     var parameters: [GoogleAnalyticsHitParameter] = [.type(value: GoogleAnalyticsHitType.page)]
     parameters.append(.documentHostname(value: documentHostname))
     
@@ -33,7 +34,7 @@ public extension GoogleAnalyticsHit {
     return GoogleAnalyticsHit(parameters: parameters)
   }
   
-  static func page(path: String, title: String, userID: String? = nil) -> GoogleAnalyticsHit {
+  public static func page(path: String, title: String, userID: String? = nil) -> GoogleAnalyticsHit {
     var parameters: [GoogleAnalyticsHitParameter] = [.type(value: GoogleAnalyticsHitType.page)]
     parameters.append(.path(value: path))
     parameters.append(.title(value: title))

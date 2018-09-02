@@ -30,7 +30,7 @@ public enum GoogleAnalyticsHitParameter {
 }
 
 
-extension GoogleAnalyticsHitParameter {
+internal extension GoogleAnalyticsHitParameter {
   
   var key: String {
     switch self {
