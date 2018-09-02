@@ -37,7 +37,7 @@ let gac = try req.make(GoogleAnalyticsClient.self)
 gac.send(hit: .event(category: "API", action: "create TODO"))
 ~~~~
 
-And you can always check the documentation to see the required paramaters for specific API calls.
+And you can always check the documentation to see the required parameters for specific API calls.
 
 
 ## Whats Implemented
@@ -55,7 +55,7 @@ And you can always check the documentation to see the required paramaters for sp
 ---
 ### Error and Quotas
 * [x] Too big hits
-* [x] Malformated Hits
+* [x] Malformed Hits
 
 # Author
 
