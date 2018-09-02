@@ -21,7 +21,7 @@ public enum GoogleAnalyticsHitParameter {
   case category(value: String)
   case action(value: String)
   case label(value: String)
-  case value(value: String)
+  case value(value: Int)
   
   // Page Parameter
   case documentHostname(value: String)
@@ -94,7 +94,7 @@ internal extension GoogleAnalyticsHitParameter {
     case .category(let value):            return value
     case .action(let value):              return value
     case .label(let value):               return value
-    case .value(let value):               return value
+    case .value(let value):               return "\(value)"
     case .documentHostname(let value):    return value
     case .path(let value):                return value
     case .title(let value):               return value

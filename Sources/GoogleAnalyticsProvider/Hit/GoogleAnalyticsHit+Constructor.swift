@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Event Tracking Hit Constructor
 public extension GoogleAnalyticsHit {
   public static func event(category: String, action: String,
-                           label: String? = nil, value: String? = nil,
+                           label: String? = nil, value: Int? = nil,
                            userID: String? = nil) -> GoogleAnalyticsHit {
     var parameters: [GoogleAnalyticsHitParameter] = [.type(value: GoogleAnalyticsHitType.event)]
     parameters.append(.category(value: category))
