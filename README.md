@@ -64,7 +64,7 @@ And you can always check the documentation to see the required parameters for sp
 
 ## License
 
-Vapor Stripe Provider is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
+Google Analytics Provider is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 ## Want to help?
 Feel free to submit a pull request whether it's a clean up, a new approach to handling things, adding a new part of the API, or even if it's just a typo. All help is welcomed! 😀
